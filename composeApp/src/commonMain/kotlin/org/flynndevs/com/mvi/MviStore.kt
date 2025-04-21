@@ -23,7 +23,7 @@ import kotlinx.coroutines.launch
  */
 class MviStore<S : ViewState, I : ViewIntent, A : ReduceAction>(
     initialState: S,
-    val scope: CoroutineScope = CoroutineScope(SupervisorJob()),
+    private val scope: CoroutineScope = CoroutineScope(SupervisorJob()),
     private val reducer: Reducer<S, A> = Reducer { currentState, _ -> currentState },
     private val middlewares: List<Middleware<S, I, A>> = emptyList()
 ) : Store<S, I, A> {

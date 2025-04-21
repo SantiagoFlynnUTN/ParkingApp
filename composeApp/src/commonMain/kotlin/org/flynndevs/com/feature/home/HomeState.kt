@@ -1,4 +1,4 @@
-package org.flynndevs.com.feature.home.state
+package org.flynndevs.com.feature.home
 
 import org.flynndevs.com.mvi.ReduceAction
 import org.flynndevs.com.mvi.ViewIntent

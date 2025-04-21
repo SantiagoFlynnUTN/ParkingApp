@@ -10,9 +10,8 @@ class MyApplication : Application() {
         super.onCreate()
 
         // Initialize Koin with Android context
-        startKoin {
+        initKoin {
             androidContext(this@MyApplication)
-            modules(org.flynndevs.com.di.appModule())
         }
     }
 }

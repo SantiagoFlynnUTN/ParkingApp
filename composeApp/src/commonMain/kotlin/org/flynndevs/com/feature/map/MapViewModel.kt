@@ -1,4 +1,4 @@
-package org.flynndevs.com.feature.home
+package org.flynndevs.com.feature.map
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -8,27 +8,25 @@ import kotlinx.coroutines.flow.StateFlow
 import org.flynndevs.com.mvi.MviStore
 import org.flynndevs.com.mvi.Store
 
-class HomeViewModel(
-
-) : ViewModel(),
-    Store<HomeViewState,
-        HomeViewIntent,
-        HomeReduceAction> {
+class MapViewModel : ViewModel(),
+    Store<MapViewState,
+            MapViewIntent,
+            MapReduceAction> {
 
     private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
     private val store = MviStore(
-        initialState = HomeViewState(),
+        initialState = MapViewState(),
         scope = scope,
-        reducer = HomeReducer(),
+        reducer = MapReducer(),
         middlewares = listOf(
-            HomeMiddleware()
+            MapMiddleware()
         )
     )
 
-    override val state: StateFlow<HomeViewState> = store.state
+    override val state: StateFlow<MapViewState> = store.state
 
-    override fun onIntent(intent: HomeViewIntent) {
+    override fun onIntent(intent: MapViewIntent) {
         store.onIntent(intent)
     }
 }

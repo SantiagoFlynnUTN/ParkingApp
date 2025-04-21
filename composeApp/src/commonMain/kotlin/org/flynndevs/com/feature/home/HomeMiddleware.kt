@@ -1,8 +1,5 @@
-package org.flynndevs.com.feature.home.middleware
+package org.flynndevs.com.feature.home
 
-import org.flynndevs.com.feature.home.state.HomeReduceAction
-import org.flynndevs.com.feature.home.state.HomeViewIntent
-import org.flynndevs.com.feature.home.state.HomeViewState
 import org.flynndevs.com.mvi.Middleware
 
 class HomeMiddleware : Middleware<HomeViewState, HomeViewIntent, HomeReduceAction> {

@@ -1,7 +1,5 @@
-package org.flynndevs.com.feature.home.reducer
+package org.flynndevs.com.feature.home
 
-import org.flynndevs.com.feature.home.state.HomeReduceAction
-import org.flynndevs.com.feature.home.state.HomeViewState
 import org.flynndevs.com.mvi.Reducer
 
 class HomeReducer : Reducer<HomeViewState, HomeReduceAction> {

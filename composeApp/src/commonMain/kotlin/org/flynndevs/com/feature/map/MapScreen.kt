@@ -1,4 +1,4 @@
-package org.flynndevs.com.feature.home
+package org.flynndevs.com.feature.map
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -14,11 +14,13 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import org.koin.compose.viewmodel.koinViewModel
 
 @Composable
-fun HomeScreen(
-    viewModel: HomeViewModel = koinViewModel()
+fun MapScreen(
+    viewModel: MapViewModel = koinViewModel(),
+    navController: NavController? = null
 ) {
     val state by viewModel.state.collectAsState()
 
@@ -30,23 +32,32 @@ fun HomeScreen(
         verticalArrangement = Arrangement.Center
     ) {
         Text(
-            text = state.welcomeMessage,
+            text = state.title,
             style = MaterialTheme.typography.displayMedium
         )
 
         Text(
-            text = "You are successfully logged in",
+            text = "Map screen placeholder",
             style = MaterialTheme.typography.bodyLarge,
             modifier = Modifier.padding(top = 8.dp)
         )
 
         Button(
             onClick = {
-                viewModel.onIntent(HomeViewIntent.UpdateWelcomeMessage("Welcome back!"))
+                viewModel.onIntent(MapViewIntent.UpdateTitle("Updated Map View"))
             },
             modifier = Modifier.padding(top = 16.dp)
         ) {
-            Text("Update Message")
+            Text("Update Title")
+        }
+
+        Button(
+            onClick = {
+                navController?.navigateUp()
+            },
+            modifier = Modifier.padding(top = 8.dp)
+        ) {
+            Text("Go Back Home")
         }
 
         if (state.isLoading) {

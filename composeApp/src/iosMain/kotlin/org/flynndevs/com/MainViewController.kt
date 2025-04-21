@@ -1,9 +1,10 @@
 package org.flynndevs.com
 
 import androidx.compose.ui.window.ComposeUIViewController
-import org.flynndevs.com.di.initKoinIos
+import org.flynndevs.com.di.initKoin
 
-// Initialize Koin for iOS
-private val koinApp = initKoinIos()
-
-fun MainViewController() = ComposeUIViewController { App() }
+fun MainViewController() = ComposeUIViewController(
+    configure = {
+        initKoin()
+    }
+) { App() }
