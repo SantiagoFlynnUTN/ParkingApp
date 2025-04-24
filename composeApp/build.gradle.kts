@@ -35,6 +35,9 @@ kotlin {
             implementation(libs.androidx.activity.compose)
             implementation(libs.jetbrains.compose.navigation)
             implementation(libs.koin.android)
+            implementation("com.google.maps.android:maps-compose:2.11.4")
+            implementation("com.google.android.gms:play-services-maps:18.1.0")
+            implementation("com.google.android.gms:play-services-location:21.0.1")
         }
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -71,6 +74,11 @@ android {
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
         versionName = "1.0"
+
+        // Read the API key from local.properties
+        val properties =
+            org.jetbrains.kotlin.konan.properties.loadProperties(rootProject.file("local.properties").absolutePath)
+        manifestPlaceholders["MAPS_API_KEY"] = properties.getProperty("MAPS_API_KEY", "")
     }
     packaging {
         resources {

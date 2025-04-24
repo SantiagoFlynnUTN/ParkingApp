@@ -19,6 +19,8 @@ navigationCompose = "2.8.0-alpha10"
 kotlinSerialization = "1.7.3"
 koin = "4.0.0"
 ktor = "3.0.0"
+ktorServer = "3.0.0-beta-2"
+
 coil3 = "3.0.0-rc02"
 ksp = "2.0.20-1.0.24"
 sqlite = "2.5.0"
@@ -68,9 +70,9 @@ androidx-room-runtime = { group = "androidx.room", name = "room-runtime", versio
 sqlite-bundled = { module = "androidx.sqlite:sqlite-bundled", version.ref = "sqlite" }
 
 logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
-ktor-server-core = { module = "io.ktor:ktor-server-core-jvm", version.ref = "ktor" }
-ktor-server-netty = { module = "io.ktor:ktor-server-netty-jvm", version.ref = "ktor" }
-ktor-server-tests = { module = "io.ktor:ktor-server-tests-jvm", version.ref = "ktor" }
+ktor-server-core = { module = "io.ktor:ktor-server-core-jvm", version.ref = "ktorServer" }
+ktor-server-netty = { module = "io.ktor:ktor-server-netty-jvm", version.ref = "ktorServer" }
+ktor-server-tests = { module = "io.ktor:ktor-server-tests-jvm", version.ref = "ktorServer" }
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

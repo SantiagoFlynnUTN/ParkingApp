@@ -9,6 +9,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import org.flynndevs.com.domain.navigation.Directions
 import org.flynndevs.com.feature.home.HomeScreen
 import org.flynndevs.com.feature.home.HomeViewModel
 import org.flynndevs.com.feature.map.MapScreen
@@ -18,21 +19,21 @@ import org.koin.compose.viewmodel.koinViewModel
 @Composable
 fun MainNavigation() {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = "home") {
+    NavHost(navController = navController, startDestination = Directions.Map) {
         homeScreen(navController)
         mapScreen(navController)
     }
 }
 
 fun NavGraphBuilder.homeScreen(navController: NavController) {
-    composable("home") {
+    composable<Directions.Home> {
         val viewModel: HomeViewModel = it.sharedKoinViewModel(navController)
         HomeScreen(viewModel)
     }
 }
 
 fun NavGraphBuilder.mapScreen(navController: NavController) {
-    composable("map") {
+    composable<Directions.Map> {
         val viewModel: MapViewModel = it.sharedKoinViewModel(navController)
         MapScreen(viewModel, navController)
     }

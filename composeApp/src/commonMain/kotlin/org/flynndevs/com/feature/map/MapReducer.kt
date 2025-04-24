@@ -12,6 +12,15 @@ class MapReducer : Reducer<MapViewState, MapReduceAction> {
             is MapReduceAction.SetLoading -> currentState.copy(
                 isLoading = action.isLoading
             )
+
+            is MapReduceAction.SetPermissionGranted -> currentState.copy(
+                permissionGranted = action.granted
+            )
+
+            is MapReduceAction.SetUserLocation -> currentState.copy(
+                userLatitude = action.latitude,
+                userLongitude = action.longitude
+            )
         }
     }
 }

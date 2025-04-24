@@ -17,6 +17,25 @@ class MapMiddleware : Middleware<MapViewState, MapViewIntent, MapReduceAction> {
 
                 dispatch(MapReduceAction.SetLoading(false))
             }
+
+            is MapViewIntent.RequestLocationPermission -> {
+                // In the common code we just update the state
+                // Platform specific implementation will handle actual permission request
+                dispatch(MapReduceAction.SetLoading(true))
+                // Permission handling will be implemented in platform-specific code
+                dispatch(MapReduceAction.SetLoading(false))
+            }
+
+            is MapViewIntent.GetUserLocation -> {
+                // Location retrieval will be implemented in platform-specific code
+                dispatch(MapReduceAction.SetLoading(true))
+                // This is a placeholder - the actual implementation will be in platform-specific code
+                dispatch(MapReduceAction.SetLoading(false))
+            }
+
+            is MapViewIntent.UpdateUserLocation -> {
+                dispatch(MapReduceAction.SetUserLocation(intent.latitude, intent.longitude))
+            }
         }
     }
 }
